@@ -1,14 +1,14 @@
 #include "Net.h"
 
-void Net::NotifyListeners()
+void Net::NotifyListeners(time time)
 {
 	for (InputPin* p : _Listeners)
 	{
-		p->OnInputEvent();
+		p->OnInputEvent(time);
 	}
 }
 
-void Net::DriveSignal(pin_id pinId, data_value value)
+void Net::DriveSignal(pin_id pinId, data_value value, time time)
 {
 	_Drivers[pinId] = value;
 
@@ -20,10 +20,10 @@ void Net::DriveSignal(pin_id pinId, data_value value)
 	else
 		throw "Short circuit exception"; // replace with new exception
 
-	NotifyListeners();
+	NotifyListeners(time);
 }
 
-void Net::RemoveDriver(pin_id pinId)
+void Net::RemoveDriver(pin_id pinId, time time)
 {
 	_Drivers.erase(pinId);
 
@@ -34,7 +34,7 @@ void Net::RemoveDriver(pin_id pinId)
 			_Value = _PullValue;
 		// else _Value = random
 		if (_Value != tempVal)
-			NotifyListeners();
+			NotifyListeners(time);
 	}
 }
 
@@ -56,6 +56,8 @@ Net::Net(data_width width)
 {
 	_Width = width;
 	_Pull = false;
-	// init values with random
+
+	// init values with random and & with data_width
+
 	// check if _Drivers and _Listeners should be instantiated
 }

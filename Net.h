@@ -11,13 +11,13 @@ typedef unsigned int data_value;
 class Net
 {
 private:
-	void NotifyListeners();
+	void NotifyListeners(time time);
 
 public:
 	// Called only from event execution queue
-	void DriveSignal(pin_id pinId, data_value value); // assert that pin.width = width
+	void DriveSignal(pin_id pinId, data_value value, time time); // assert that pin.width = width
 
-	void RemoveDriver(pin_id pinId);
+	void RemoveDriver(pin_id pinId, time time);
 
 	void SetPull(data_value value);
 

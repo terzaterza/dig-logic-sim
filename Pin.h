@@ -2,6 +2,7 @@
 
 #include "Net.h"
 #include "EventQueue.h"
+#include "Instance.h"
 
 typedef unsigned int pin_id;
 
@@ -12,17 +13,26 @@ public:
 
 	void SetNet(Net& net);
 
+protected:
+	const pin_id _PinIndex; // index in instance input/output pin array
+
 private:
-	pin_id id; // globally unique id
-	data_width _Width;
+	const pin_id _ID; // globally unique id
+	const data_width _Width;
 
 	Net* _Net;
+
+public:
+	Pin(pin_id pinIndex, data_width width);
 };
 
 class InputPin : public Pin
 {
 public:
-	void OnInputEvent();
+	void OnInputEvent(time time);
+
+private:
+	Instance& _Instance;
 };
 
 class OutputPin : public Pin
