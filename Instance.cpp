@@ -6,7 +6,7 @@ BehavioralInstance::BehavioralInstance(Architecture& arch)
 
 }
 
-void BehavioralInstance::OnInputEvent(unsigned int pinIndex, time time)
+void BehavioralInstance::OnInputEvent(unsigned int portIndex, time time)
 {
 
 }

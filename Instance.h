@@ -2,22 +2,22 @@
 
 #include "Architecture.h"
 #include "Circuit.h"
-#include "Pin.h"
+#include "Port.h"
 
 class Instance
 {
 public:
-	virtual void OnInputEvent(unsigned int pinIndex, time time) = 0; // could replace pinIndex type to pin_id
+	virtual void OnInputEvent(unsigned int portIndex, time time) = 0; // could replace portIndex type to port_id
 
 private:
-	InputPin* _InputPins;
-	OutputPin* _OutputPins;
+	InputPort* _InputPorts;
+	OutputPort* _OutputPorts;
 };
 
 class BehavioralInstance : public Instance
 {
 public:
-	void OnInputEvent(unsigned int pinIndex, time time) override;
+	void OnInputEvent(unsigned int portIndex, time time) override;
 
 private:
 	Architecture& _Arch;

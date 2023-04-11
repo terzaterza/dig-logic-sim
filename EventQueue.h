@@ -7,7 +7,7 @@
 #define EVENT_QUEUE_TIMEOUT 500
 
 typedef unsigned int time;
-typedef std::tuple<Net*, data_value, pin_id> driver_data;
+typedef std::tuple<Net*, data_value, port_id> driver_data;
 typedef std::pair<time, driver_data> event_data;
 
 class EventQueue

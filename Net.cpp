@@ -2,15 +2,15 @@
 
 void Net::NotifyListeners(time time)
 {
-	for (InputPin* p : _Listeners)
+	for (InputPort* p : _Listeners)
 	{
 		p->OnInputEvent(time);
 	}
 }
 
-void Net::DriveSignal(pin_id pinId, data_value value, time time)
+void Net::DriveSignal(port_id portId, data_value value, time time)
 {
-	_Drivers[pinId] = value;
+	_Drivers[portId] = value;
 
 	if (value == _Value)
 		return;
@@ -23,9 +23,9 @@ void Net::DriveSignal(pin_id pinId, data_value value, time time)
 	NotifyListeners(time);
 }
 
-void Net::RemoveDriver(pin_id pinId, time time)
+void Net::RemoveDriver(port_id portId, time time)
 {
-	_Drivers.erase(pinId);
+	_Drivers.erase(portId);
 
 	if (_Drivers.size() == 0)
 	{

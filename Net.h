@@ -3,7 +3,7 @@
 #include <vector>
 #include <map>
 
-#include "Pin.h"
+#include "Port.h"
 
 typedef unsigned int data_width; // should be < sizeof(data_value)
 typedef unsigned int data_value;
@@ -15,9 +15,9 @@ private:
 
 public:
 	// Called only from event execution queue
-	void DriveSignal(pin_id pinId, data_value value, time time); // assert that pin.width = width
+	void DriveSignal(port_id portId, data_value value, time time); // assert that port.width = width
 
-	void RemoveDriver(pin_id pinId, time time);
+	void RemoveDriver(port_id portId, time time);
 
 	void SetPull(data_value value);
 
@@ -32,8 +32,8 @@ private:
 	data_value _PullValue;
 	data_value _Value;
 
-	std::map<pin_id, data_value> _Drivers;
-	std::vector<InputPin*> _Listeners;
+	std::map<port_id, data_value> _Drivers;
+	std::vector<InputPort*> _Listeners;
 
 public:
 	Net(data_width width);
