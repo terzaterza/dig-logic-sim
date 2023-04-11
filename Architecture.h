@@ -1,20 +1,31 @@
 #pragma once
 
+#include "Instance.h"
 #include "Port.h"
 
-// unsigned int = port_id (port index)
-typedef std::map<unsigned int, std::pair<data_value, time>> process_result;
-typedef process_result (*process)(data_value*, unsigned int);
+typedef std::map<port_id, std::pair<data_value, time>> port_drive_map;
+typedef void (*process)(const data_value*, port_id, port_drive_map&);
+
+typedef std::pair<std::vector<port_id>&, process> sensitive_process;
 
 class Architecture
 {
-public:
-	virtual void OnInputEvent() = 0;
-
 private:
-	unsigned int _InputPortCount, _OutputPortCount;
-	data_width* _InputWidths, * _OutputWidths;
+	const unsigned int _InputPortCount, _OutputPortCount; // could be of port_id type
+	const data_width* _InputPortWidths, * _OutputPortWidths;
+
+	std::vector<process>* _Processes;
 
 public:
-	Architecture()
+	Architecture(
+		unsigned int inCount,
+		data_width* inWidths,
+		unsigned int outCount,
+		data_width* outWidths,
+		const std::vector<sensitive_process>& processes
+	);
+
+	~Architecture();
+
+	friend class BehavioralInstance;
 };

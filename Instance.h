@@ -7,17 +7,17 @@
 class Instance
 {
 public:
-	virtual void OnInputEvent(unsigned int portIndex, time time) = 0; // could replace portIndex type to port_id
+	virtual void OnInputEvent(port_id portIndex, time time) = 0;
 
-private:
-	InputPort* _InputPorts;
-	OutputPort* _OutputPorts;
+protected:
+	std::vector<InputPort> _InputPorts; // could change to InputPort*
+	std::vector<OutputPort> _OutputPorts;
 };
 
 class BehavioralInstance : public Instance
 {
 public:
-	void OnInputEvent(unsigned int portIndex, time time) override;
+	void OnInputEvent(port_id portIndex, time eventTime) override;
 
 private:
 	Architecture& _Arch;

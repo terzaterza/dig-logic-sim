@@ -2,10 +2,9 @@
 
 #include <vector>
 #include <map>
-
 #include "Port.h"
 
-typedef unsigned int data_width; // should be < sizeof(data_value)
+typedef unsigned int data_width; // should be <= sizeof(data_value)
 typedef unsigned int data_value;
 
 class Net

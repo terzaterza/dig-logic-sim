@@ -16,7 +16,7 @@ public:
 	void AddEvent(const event_data& event);
 private:
 	std::priority_queue<event_data> _Queue;
-	bool _QueueExecuting;
+	bool _QueueExecuting = false;
 
 	void ExecuteEvents();
 };

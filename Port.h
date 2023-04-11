@@ -9,9 +9,9 @@ typedef unsigned int port_id;
 class Port
 {
 public:
-	const Net& GetNet() const;
-
 	void SetNet(Net& net);
+
+	inline data_value GetValue() const;
 
 protected:
 	const port_id _PortIndex; // index in instance input/output port array
@@ -32,11 +32,16 @@ public:
 	void OnInputEvent(time time);
 
 private:
-	Instance& _Instance;
+	Instance* _Instance;
+
+public:
+	InputPort(port_id portIndex, data_width width, Instance* instance);
 };
 
 class OutputPort : public Port
 {
 public:
-	void DriveSignal(data_value value, time delay);
+	void DriveSignal(data_value value, time eventTime);
+
+	OutputPort(port_id portIndex, data_width width);
 };

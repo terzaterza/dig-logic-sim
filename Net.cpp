@@ -18,7 +18,7 @@ void Net::DriveSignal(port_id portId, data_value value, time time)
 	if (_Drivers.size() == 1)
 		_Value = value;
 	else
-		throw "Short circuit exception"; // replace with new exception
+		throw "Short circuit exception"; // TODO - replace with new exception
 
 	NotifyListeners(time);
 }
@@ -32,7 +32,7 @@ void Net::RemoveDriver(port_id portId, time time)
 		data_value tempVal = _Value;
 		if (_Pull)
 			_Value = _PullValue;
-		// else _Value = random
+		// else _Value = random & data_width - HIGH_Z
 		if (_Value != tempVal)
 			NotifyListeners(time);
 	}
