@@ -17,7 +17,6 @@ inline data_value Port::GetValue() const
 Port::Port(port_id portIndex, data_width width)
 	: _ID(GLOBAL_PIN_COUNT++), _PortIndex(portIndex), _Width(width)
 {
-
 }
 
 void InputPort::OnInputEvent(time time)
@@ -32,10 +31,10 @@ InputPort::InputPort(port_id portIndex, data_width width, Instance* instance)
 
 void OutputPort::DriveSignal(data_value value, time eventTime)
 {
-	// TODO - circuit.addEvent
+	_Circuit.AddSignalEvent(_Net, _ID, value, eventTime);
 }
 
-OutputPort::OutputPort(port_id portIndex, data_width width)
-	: Port(portIndex, width)
+OutputPort::OutputPort(port_id portIndex, data_width width, Circuit& circuit)
+	: Port(portIndex, width), _Circuit(circuit)
 {
 }

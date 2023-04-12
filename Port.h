@@ -15,8 +15,6 @@ public:
 
 protected:
 	const port_id _PortIndex; // index in instance input/output port array
-
-private:
 	const port_id _ID; // globally unique id
 	const data_width _Width;
 
@@ -43,5 +41,8 @@ class OutputPort : public Port
 public:
 	void DriveSignal(data_value value, time eventTime);
 
-	OutputPort(port_id portIndex, data_width width);
+	OutputPort(port_id portIndex, data_width width, Circuit& circuit);
+
+private:
+	Circuit& _Circuit;
 };
