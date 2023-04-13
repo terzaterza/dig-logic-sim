@@ -1,6 +1,9 @@
 #pragma once
 
-#include "EventQueue.h"
+#include "Types.h"
+
+class Net;
+class EventQueue;
 
 class Circuit
 {
@@ -11,7 +14,7 @@ public:
 		Net* net,
 		port_id portIndex,
 		data_value value,
-		time eventTime
+		ev_time eventTime
 	);
 
 private:

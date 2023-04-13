@@ -2,14 +2,14 @@
 
 #include <tuple>
 #include <queue>
-#include "Net.h"
-#include "Port.h"
+#include "Types.h"
 
 #define EVENT_QUEUE_TIMEOUT 500
 
-typedef unsigned int time;
+class Net;
+
 typedef std::tuple<Net*, data_value, port_id> driver_data;
-typedef std::pair<time, driver_data> event_data;
+typedef std::pair<ev_time, driver_data> event_data;
 
 class EventQueue
 {

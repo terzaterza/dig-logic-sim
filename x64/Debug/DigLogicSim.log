@@ -1,0 +1,5 @@
+﻿  Instance.cpp
+D:\dev\dig-logic-sim\DigLogicSim\Instance.cpp(21,45): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  Net.cpp
+  Generating Code...
+  DigLogicSim.vcxproj -> D:\dev\dig-logic-sim\DigLogicSim\x64\Debug\DigLogicSim.exe

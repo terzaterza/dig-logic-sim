@@ -1,6 +1,7 @@
 #include "Net.h"
+#include "Port.h"
 
-void Net::NotifyListeners(time time)
+void Net::NotifyListeners(ev_time time)
 {
 	for (InputPort* p : _Listeners)
 	{
@@ -8,7 +9,7 @@ void Net::NotifyListeners(time time)
 	}
 }
 
-void Net::DriveSignal(port_id portId, data_value value, time time)
+void Net::DriveSignal(port_id portId, data_value value, ev_time time)
 {
 	_Drivers[portId] = value;
 
@@ -23,7 +24,7 @@ void Net::DriveSignal(port_id portId, data_value value, time time)
 	NotifyListeners(time);
 }
 
-void Net::RemoveDriver(port_id portId, time time)
+void Net::RemoveDriver(port_id portId, ev_time time)
 {
 	_Drivers.erase(portId);
 
@@ -53,10 +54,8 @@ data_value Net::GetValue()
 }
 
 Net::Net(data_width width)
+	: _Width(width), _Pull(false), _Value(0), _PullValue(0)
 {
-	_Width = width;
-	_Pull = false;
-
 	// init values with random and & with data_width
 
 	// check if _Drivers and _Listeners should be instantiated

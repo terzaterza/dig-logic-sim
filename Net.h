@@ -2,21 +2,20 @@
 
 #include <vector>
 #include <map>
-#include "Port.h"
+#include "Types.h"
 
-typedef unsigned int data_width; // should be <= sizeof(data_value)
-typedef unsigned int data_value;
+class InputPort;
 
 class Net
 {
 private:
-	void NotifyListeners(time time);
+	void NotifyListeners(ev_time time);
 
 public:
 	// Called only from event execution queue
-	void DriveSignal(port_id portId, data_value value, time time); // assert that port.width = width
+	void DriveSignal(port_id portId, data_value value, ev_time time); // assert that port.width = width
 
-	void RemoveDriver(port_id portId, time time);
+	void RemoveDriver(port_id portId, ev_time time);
 
 	void SetPull(data_value value);
 

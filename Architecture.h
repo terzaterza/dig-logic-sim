@@ -1,12 +1,6 @@
 #pragma once
 
-#include "Instance.h"
-#include "Port.h"
-
-typedef std::map<port_id, std::pair<data_value, time>> port_drive_map;
-typedef void (*process)(const data_value*, port_id, port_drive_map&);
-
-typedef std::pair<std::vector<port_id>&, process> sensitive_process;
+#include "Types.h"
 
 class Architecture
 {

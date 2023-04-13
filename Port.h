@@ -1,17 +1,17 @@
 #pragma once
 
-#include "Net.h"
-#include "EventQueue.h"
-#include "Instance.h"
+#include "Types.h"
 
-typedef unsigned int port_id;
+class Net;
+class Circuit;
+class Instance;
 
 class Port
 {
 public:
 	void SetNet(Net& net);
 
-	inline data_value GetValue() const;
+	data_value GetValue() const;
 
 protected:
 	const port_id _PortIndex; // index in instance input/output port array
@@ -27,7 +27,7 @@ public:
 class InputPort : public Port
 {
 public:
-	void OnInputEvent(time time);
+	void OnInputEvent(ev_time time);
 
 private:
 	Instance* _Instance;
@@ -39,7 +39,7 @@ public:
 class OutputPort : public Port
 {
 public:
-	void DriveSignal(data_value value, time eventTime);
+	void DriveSignal(data_value value, ev_time eventTime);
 
 	OutputPort(port_id portIndex, data_width width, Circuit& circuit);
 

@@ -1,4 +1,5 @@
 #include "EventQueue.h"
+#include "Net.h"
 
 void EventQueue::AddEvent(const event_data& event)
 {
@@ -16,7 +17,7 @@ void EventQueue::ExecuteEvents()
 	{
 		// could set max simulation time and when q.top.time > that end simulation
 
-		time time = _Queue.top().first;
+		ev_time time = _Queue.top().first;
 		driver_data event = _Queue.top().second;
 		_Queue.pop();
 

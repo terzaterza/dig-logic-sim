@@ -127,8 +127,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Architecture.h" />
+    <ClInclude Include="Circuit.h" />
+    <ClInclude Include="EventQueue.h" />
+    <ClInclude Include="Instance.h" />
     <ClInclude Include="Net.h" />
-    <ClInclude Include="Pin.h" />
+    <ClInclude Include="Port.h" />
+    <ClInclude Include="Types.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Architecture.cpp" />
+    <ClCompile Include="Circuit.cpp" />
+    <ClCompile Include="EventQueue.cpp" />
+    <ClCompile Include="Instance.cpp" />
+    <ClCompile Include="Net.cpp" />
+    <ClCompile Include="Port.cpp" />
+    <ClCompile Include="Sandbox.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
