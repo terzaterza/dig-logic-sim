@@ -1,17 +1,13 @@
 #include "Architecture.h"
 
 Architecture::Architecture(
-	unsigned int inCount,
-	data_width* inWidths,
-	unsigned int outCount,
-	data_width* outWidths,
+	std::vector<data_width> inWidths,
+	std::vector<data_width> outWidths,
 	const std::vector<sensitive_process>& processes
 ) :
-	_InputPortCount(inCount),
 	_InputPortWidths(inWidths),
-	_OutputPortCount(outCount),
 	_OutputPortWidths(outWidths),
-	_Processes(new std::vector<process>[inCount])
+	_Processes(new std::vector<process>[inWidths.size()])
 {
 	for (const sensitive_process& p : processes)
 	{

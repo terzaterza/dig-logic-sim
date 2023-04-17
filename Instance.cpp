@@ -5,12 +5,15 @@
 BehavioralInstance::BehavioralInstance(Architecture& arch, Circuit& circuit)
 	: Instance(circuit), _Arch(arch)
 {
-	_InputPorts.reserve(arch._InputPortCount);
-	_OutputPorts.reserve(arch._OutputPortCount);
+	int inputPortCount = arch._InputPortWidths.size();
+	int outputPortCount = arch._OutputPortWidths.size();
+
+	_InputPorts.reserve(inputPortCount);
+	_OutputPorts.reserve(outputPortCount);
 	
-	for (unsigned int i = 0; i < arch._InputPortCount; i++)
+	for (unsigned int i = 0; i < inputPortCount; i++)
 		_InputPorts.emplace_back(i, arch._InputPortWidths[i], this);
-	for (unsigned int i = 0; i < arch._OutputPortCount; i++)
+	for (unsigned int i = 0; i < outputPortCount; i++)
 		_OutputPorts.emplace_back(i, arch._OutputPortWidths[i], _Circuit);
 }
 
@@ -35,7 +38,7 @@ void BehavioralInstance::OnInputEvent(port_id portIndex, ev_time eventTime)
 	for (auto& i : output)
 	{
 		ev_time delay = i.second.second;
-		data_value new_value = i.second.first;
+		data_value new_value = i.second.first; // & with output mask here
 		_OutputPorts[i.first].DriveSignal(new_value, eventTime + delay);
 	}
 }

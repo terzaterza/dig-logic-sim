@@ -1,5 +1,9 @@
 ﻿  Instance.cpp
-D:\dev\dig-logic-sim\DigLogicSim\Instance.cpp(21,45): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  Net.cpp
+D:\dev\dig-logic-sim\DigLogicSim\Instance.cpp(8,51): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\dev\dig-logic-sim\DigLogicSim\Instance.cpp(9,53): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\dev\dig-logic-sim\DigLogicSim\Instance.cpp(14,29): warning C4018: '<': signed/unsigned mismatch
+D:\dev\dig-logic-sim\DigLogicSim\Instance.cpp(16,29): warning C4018: '<': signed/unsigned mismatch
+D:\dev\dig-logic-sim\DigLogicSim\Instance.cpp(24,45): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  Sandbox.cpp
   Generating Code...
   DigLogicSim.vcxproj -> D:\dev\dig-logic-sim\DigLogicSim\x64\Debug\DigLogicSim.exe

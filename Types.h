@@ -14,4 +14,4 @@ typedef unsigned int ev_time;
 
 typedef std::map<port_id, std::pair<data_value, ev_time>> port_drive_map;
 typedef void (*process)(const data_value*, port_id, port_drive_map&);
-typedef std::pair<std::vector<port_id>&, process> sensitive_process;
+typedef std::pair<std::vector<port_id>, process> sensitive_process;
